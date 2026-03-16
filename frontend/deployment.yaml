@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: mywallet.azurecr.io/mywallet-frontend:11
+        image: mywallet.azurecr.io/mywallet-frontend:12
         ports:
         - containerPort: 80

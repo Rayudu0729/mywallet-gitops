@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: mywallet.azurecr.io/mywallet-backend:11
+        image: mywallet.azurecr.io/mywallet-backend:12
         ports:
         - containerPort: 8080
 
