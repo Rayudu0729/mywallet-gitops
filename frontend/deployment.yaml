@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywallet-frontend
+  labels:
+    app: mywallet-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mywallet-frontend
+  template:
+    metadata:
+      labels:
+        app: mywallet-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: mywallet.azurecr.io/mywallet-frontend:latest
+        ports:
+        - containerPort: 80

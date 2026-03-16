@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywallet-backend
+  labels:
+    app: mywallet-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mywallet-backend
+  template:
+    metadata:
+      labels:
+        app: mywallet-backend
+    spec:
+      containers:
+      - name: backend
+        image: mywallet.azurecr.io/mywallet-backend:latest
+        ports:
+        - containerPort: 8080
+
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mywalletmysql.mysql.database.azure.com:3306/expensetracker?useSSL=true&requireSSL=true&serverTimezone=UTC
+
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: username
+
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
