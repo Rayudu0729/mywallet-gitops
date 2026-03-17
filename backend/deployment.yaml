@@ -23,7 +23,9 @@ spec:
         env:
         - name: SPRING_DATASOURCE_URL
           value: jdbc:mysql://mywalletmysql.mysql.database.azure.com:3306/expensetracker?useSSL=true&requireSSL=true&serverTimezone=UTC
-
+        - name: APP_CORS_ALLOWED_ORIGINS
+          value: "https://mywallet.rayududev.live,https://api.mywallet.rayududev.live"
+        
         - name: SPRING_DATASOURCE_USERNAME
           valueFrom:
             secretKeyRef:
